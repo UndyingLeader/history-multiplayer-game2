@@ -2,6 +2,9 @@ const express=require('express');
 const http=require('http');const {Server}=require('socket.io');
 const questions=require('./questions.json');
 const app=express();app.use(express.static('public'));
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 const server=http.createServer(app),io=new Server(server),rooms=new Map();
 const norm=s=>String(s||'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
 // Accept meaningful keyword variations, while requiring all four goals for Q1.
