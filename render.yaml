@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: progressive-era-live
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
